@@ -1,0 +1,35 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="14">
+            <item index="0" class="java.lang.String" itemvalue="werkzeug" />
+            <item index="1" class="java.lang.String" itemvalue="flask-mongoengine" />
+            <item index="2" class="java.lang.String" itemvalue="requests" />
+            <item index="3" class="java.lang.String" itemvalue="redis" />
+            <item index="4" class="java.lang.String" itemvalue="aliyun-python-sdk-vod" />
+            <item index="5" class="java.lang.String" itemvalue="mongoengine" />
+            <item index="6" class="java.lang.String" itemvalue="aliyun-python-sdk-core-v3" />
+            <item index="7" class="java.lang.String" itemvalue="oss2" />
+            <item index="8" class="java.lang.String" itemvalue="flask-cors" />
+            <item index="9" class="java.lang.String" itemvalue="paho-mqtt" />
+            <item index="10" class="java.lang.String" itemvalue="flask" />
+            <item index="11" class="java.lang.String" itemvalue="xlrd" />
+            <item index="12" class="java.lang.String" itemvalue="flask_script" />
+            <item index="13" class="java.lang.String" itemvalue="ujson" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N802" />
+          <option value="N803" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
