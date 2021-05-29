@@ -1,2 +1,9 @@
 i
 (i+i)*i
+
+i+i*(i+i)#
+
+E->E+T|T
+T->T*F|F
+F->P^F|P
+P->(E)|i
