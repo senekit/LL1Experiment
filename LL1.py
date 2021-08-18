@@ -276,10 +276,6 @@ def analysis(s) -> PrettyTable():
     ans.add_row(row)
     return ans
 
-
-
-
-
 if __name__ == '__main__':
     LL1()
     test = []
@@ -291,4 +287,5 @@ if __name__ == '__main__':
     for item in test:
         print(item)
         print(analysis(item))
+
 

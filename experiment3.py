@@ -4,7 +4,7 @@ table = PrettyTable()
 step = 0
 table.field_names = ['step', '已匹配', '未匹配', '使用函数']
 s = ''
-t = '(i)+#'
+t = '(i+i)*#'
 tag = True
 
 
@@ -129,9 +129,9 @@ def F() -> None:
 def print_info():
     global t
     print('递归下降分析程序')
-    print('姓名： ')
-    print('班级： ')
-    print('学号： ')
+    print('姓名： 王濡瑶')
+    print('班级： 软件工程1906')
+    print('学号： 8209190629')
     print('输入字符串： '+ t)
     pass
 

@@ -128,6 +128,89 @@ def get_priority_state(firstvt, lastvt):
                 state.extend(value[x])
     return state
 
+def get_First() -> None:
+    global Vt, Vn, First
+    for item in Vt:
+        First[item] = set(item)
+    for item in Vn:
+        First[item] = set()
+    tag = True
+    while (tag):
+        tag = False
+        for x in Vn:
+            for y in production[x]:
+                begin = len(First[x])
+                temp = 0
+                has_esp = True
+                while has_esp and temp < len(y):
+                    if esp in First[y[temp]]:
+                        if y[temp] in Vn:
+                            First[x] |= First[y[temp]] - set(esp)
+                        else:
+                            First[x] |= First[y[temp]]
+                        temp += 1
+                    else:
+                        First[x] |= First[y[temp]] - set(esp)
+                        has_esp = False
+                if len(First[x]) != begin:
+                    tag = True
+    return
+
+
+def get_Follow() -> None:
+    for item in Vn:
+        Follow[item] = set()
+    Follow[start].add(end)
+    tag = True
+    while tag:
+        tag = False
+        for x in Vn:
+            for y in production[x]:
+                #  print(y)
+                for i in range(len(y)):
+                    if y[i] in Vt:
+                        continue
+                    begin = len(Follow[y[i]])
+                    for j in range(i+1, len(y)):
+                        if y[j] in Vt:
+                            Follow[y[i]].add(y[j])
+                            if begin != len(Follow[y[i]]):
+                                tag = True
+                            break
+                        else:
+                            Follow[y[i]] |= First[y[j]] - set(esp)
+                            if esp in First[y[j]]:
+                                Follow[y[i]] |= Follow[y[j]]
+                            if begin != len(Follow[y[i]]):
+                                tag = True
+                            if esp not in First[y[j]]:
+                                break
+        for item in Grams_no_left:
+            if item[-1] in Vn:
+                begin = len(Follow[item[-1]])
+                Follow[item[-1]] |= Follow[item[0]]
+                if begin != len(Follow[item[-1]]):
+                    tag =True
+
+    return
+
+def get_AnalysisList():
+    global AnalysisList
+    for i in Vn:
+        AnalysisList[i] = dict()
+        for j in Vt:
+            AnalysisList[i][j] = None
+        AnalysisList[i][end] = None
+    for item in Grams_no_left:
+        temp = item.split('->')
+        if esp in First[temp[1][0]]:
+            for b in Follow[temp[0]]:
+                AnalysisList[temp[0]][b] = temp[0] + '->' + esp
+        else:
+            for a in First[temp[1][0]]:
+                AnalysisList[temp[0]][a] = temp[0] + '->' +temp[1]
+
+
 
 def analy_input_string(GS, table, state, input):
     ana_shed = []
